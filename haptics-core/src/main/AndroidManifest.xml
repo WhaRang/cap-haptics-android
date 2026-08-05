@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Declared here rather than in the consuming app: manifest-merger pulls it into
+        :app and into the Unity build automatically, so SDK consumers never have to
+        know this permission exists. VIBRATE is a normal (install-time) permission,
+        so there is no runtime request to make.
+    -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+</manifest>

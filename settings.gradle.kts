@@ -22,5 +22,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "HapticsAndroid"
+rootProject.name = "cap-haptics"
+include(":haptics-core")
+include(":haptics-unity")
 include(":app")

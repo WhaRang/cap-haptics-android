@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tierLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/forced_tier"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/tierGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/tierAuto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/tier_auto" />
+
+            <RadioButton
+                android:id="@+id/tierT1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tier_t1" />
+
+            <RadioButton
+                android:id="@+id/tierT2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tier_t2" />
+
+            <RadioButton
+                android:id="@+id/tierT3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tier_t3" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/durationLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" />
+
+        <SeekBar
+            android:id="@+id/durationBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="500"
+            android:progress="40" />
+
+        <TextView
+            android:id="@+id/amplitudeLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <SeekBar
+            android:id="@+id/amplitudeBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="255"
+            android:progress="200" />
+
+        <Button
+            android:id="@+id/btnOneShot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/play_one_shot" />
+
+        <Button
+            android:id="@+id/btnPulses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/play_pulses" />
+
+        <Button
+            android:id="@+id/btnRamp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/play_ramp" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel" />
+
+        <TextView
+            android:id="@+id/resultText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="monospace"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/infoText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="monospace"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+</ScrollView>

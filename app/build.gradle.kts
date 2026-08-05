@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.hapticsandroid"
+    namespace = "com.cap.haptics.demo"
     compileSdk {
         version = release(37)
     }
 
     defaultConfig {
-        applicationId = "com.example.hapticsandroid"
+        applicationId = "com.cap.haptics.demo"
         minSdk = 26
         targetSdk = 37
         versionCode = 1
@@ -32,6 +32,10 @@ android {
 }
 
 dependencies {
+    // The native test harness consumes the SDK exactly as any third-party app would --
+    // it never sees :haptics-unity. That module is the Unity adapter only.
+    implementation(project(":haptics-core"))
+
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)

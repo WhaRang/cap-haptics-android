@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">HapticsAndroid</string>
+    <string name="app_name">cap-haptics</string>
+
+    <string name="forced_tier">Forced tier (override can only go down)</string>
+    <string name="tier_auto">Auto</string>
+    <string name="tier_t1">T1</string>
+    <string name="tier_t2">T2</string>
+    <string name="tier_t3">T3</string>
+
+    <string name="play_one_shot">One-shot</string>
+    <string name="play_pulses">Triple pulse</string>
+    <string name="play_ramp">Ramp up (needs amplitude control)</string>
+    <string name="cancel">Cancel</string>
 </resources>
