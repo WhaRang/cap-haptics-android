@@ -36,4 +36,5 @@
     <string name="play_pulses">Triple pulse</string>
     <string name="play_ramp">Ramp up (needs amplitude control)</string>
     <string name="cancel">Cancel</string>
+    <string name="fuzz">Fuzz the public API (should never crash)</string>
 </resources>

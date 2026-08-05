@@ -12,6 +12,10 @@ android {
         minSdk = 26
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Travels inside the AAR: R8 in the consuming app cannot see that JNI calls the
+        // bridge, so without these it would strip it.
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     compileOptions {

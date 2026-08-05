@@ -1,0 +1,37 @@
+<resources>
+
+    <!--
+        Grid buttons carry labels the harness does not get to choose. They are enum names
+        like IMPACT_MEDIUM and TEXT_HANDLE_MOVE, sharing a row three or four ways. Autosizing
+        shrinks the text to fit instead of wrapping, so every button stays one line and the
+        rows stay aligned. minWidth and the tightened padding buy back the space the default
+        Button style reserves.
+
+        Note there is deliberately no android:textSize here: setting it explicitly switches
+        autosizing back off. autoSizeMaxTextSize is the equivalent knob.
+    -->
+    <style name="GridButton" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">7sp</item>
+        <item name="autoSizeMaxTextSize">13sp</item>
+        <item name="autoSizeStepGranularity">1sp</item>
+    </style>
+
+    <style name="WideButton" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">9sp</item>
+        <item name="autoSizeMaxTextSize">14sp</item>
+        <item name="autoSizeStepGranularity">1sp</item>
+    </style>
+
+</resources>

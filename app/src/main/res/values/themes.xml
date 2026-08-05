@@ -1,6 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.CapHaptics" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <!--
+        NoActionBar: the title bar was overlapping the top of the scrolling content, and a
+        diagnostics harness has nothing to say in a title that the info panel does not
+        already say better. Insets are applied to the root view in MainActivity.
+    -->
+    <style name="Theme.CapHaptics" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>

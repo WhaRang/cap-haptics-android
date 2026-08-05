@@ -54,6 +54,15 @@ class Waveform private constructor(
         const val NO_REPEAT: Int = -1
 
         /**
+         * A sanity bound, not a documented platform limit.
+         *
+         * The platform does not publish a maximum waveform length, but a caller handing us
+         * a million-element array is confused rather than ambitious, and finding that out
+         * from an OOM inside the vibrator service is a poor way to learn it.
+         */
+        const val MAX_STEPS: Int = 500
+
+        /**
          * Returns null when the input is invalid. Call [validate] for the reason.
          *
          * Null rather than an exception because this sits on the path from Unity, where the
@@ -86,6 +95,9 @@ class Waveform private constructor(
         ): String? = when {
             timingsMs.isEmpty() ->
                 "timings must not be empty"
+
+            timingsMs.size > MAX_STEPS ->
+                "waveform has ${timingsMs.size} steps, limit is $MAX_STEPS"
 
             timingsMs.any { it < 0 } ->
                 "timings must be non-negative, got ${timingsMs.toList()}"

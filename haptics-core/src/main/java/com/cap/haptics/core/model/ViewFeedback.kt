@@ -18,19 +18,24 @@ package com.cap.haptics.core.model
  * Like the other model enums this carries no platform constant, so the package stays
  * JVM-testable.
  */
-enum class ViewFeedback(val minApi: Int) {
-    LONG_PRESS(3),
-    VIRTUAL_KEY(5),
-    KEYBOARD_TAP(8),
-    CLOCK_TICK(21),
-    CONTEXT_CLICK(23),
-    TEXT_HANDLE_MOVE(27),
-    CONFIRM(30),
-    REJECT(30),
-    GESTURE_START(30),
-    GESTURE_END(30),
-    TOGGLE_ON(34),
-    TOGGLE_OFF(34),
-    SEGMENT_TICK(34),
-    DRAG_START(34),
+enum class ViewFeedback(val id: Int, val minApi: Int) {
+    LONG_PRESS(id = 0, minApi = 3),
+    VIRTUAL_KEY(id = 1, minApi = 5),
+    KEYBOARD_TAP(id = 2, minApi = 8),
+    CLOCK_TICK(id = 3, minApi = 21),
+    CONTEXT_CLICK(id = 4, minApi = 23),
+    TEXT_HANDLE_MOVE(id = 5, minApi = 27),
+    CONFIRM(id = 6, minApi = 30),
+    REJECT(id = 7, minApi = 30),
+    GESTURE_START(id = 8, minApi = 30),
+    GESTURE_END(id = 9, minApi = 30),
+    TOGGLE_ON(id = 10, minApi = 34),
+    TOGGLE_OFF(id = 11, minApi = 34),
+    SEGMENT_TICK(id = 12, minApi = 34),
+    DRAG_START(id = 13, minApi = 34);
+
+    companion object {
+        /** Parses an id arriving over JNI. Null rather than throwing on garbage. */
+        fun fromId(id: Int): ViewFeedback? = entries.firstOrNull { it.id == id }
+    }
 }

@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Padding on this ScrollView is applied at runtime from the window insets (see
+    MainActivity.applyWindowInsets). targetSdk 35+ draws edge to edge, so without that the
+    first control on the screen sits underneath the status bar.
+-->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clipToPadding="false">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -100,30 +108,22 @@
 
             <Button
                 android:id="@+id/btnTick"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                style="@style/GridButton"
                 android:text="@string/effect_tick" />
 
             <Button
                 android:id="@+id/btnClick"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                style="@style/GridButton"
                 android:text="@string/effect_click" />
 
             <Button
                 android:id="@+id/btnDoubleClick"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                style="@style/GridButton"
                 android:text="@string/effect_double" />
 
             <Button
                 android:id="@+id/btnHeavyClick"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                style="@style/GridButton"
                 android:text="@string/effect_heavy" />
         </LinearLayout>
 
@@ -141,35 +141,23 @@
 
             <Button
                 android:id="@+id/btnPrimClick"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/prim_click"
-                android:textSize="12sp" />
+                style="@style/GridButton"
+                android:text="@string/prim_click" />
 
             <Button
                 android:id="@+id/btnPrimTick"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/prim_tick"
-                android:textSize="12sp" />
+                style="@style/GridButton"
+                android:text="@string/prim_tick" />
 
             <Button
                 android:id="@+id/btnPrimLowTick"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/prim_low_tick"
-                android:textSize="12sp" />
+                style="@style/GridButton"
+                android:text="@string/prim_low_tick" />
 
             <Button
                 android:id="@+id/btnPrimThud"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/prim_thud"
-                android:textSize="12sp" />
+                style="@style/GridButton"
+                android:text="@string/prim_thud" />
         </LinearLayout>
 
         <LinearLayout
@@ -179,35 +167,23 @@
 
             <Button
                 android:id="@+id/btnPrimQuickRise"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/prim_quick_rise"
-                android:textSize="12sp" />
+                style="@style/GridButton"
+                android:text="@string/prim_quick_rise" />
 
             <Button
                 android:id="@+id/btnPrimSlowRise"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/prim_slow_rise"
-                android:textSize="12sp" />
+                style="@style/GridButton"
+                android:text="@string/prim_slow_rise" />
 
             <Button
                 android:id="@+id/btnPrimQuickFall"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/prim_quick_fall"
-                android:textSize="12sp" />
+                style="@style/GridButton"
+                android:text="@string/prim_quick_fall" />
 
             <Button
                 android:id="@+id/btnPrimSpin"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/prim_spin"
-                android:textSize="12sp" />
+                style="@style/GridButton"
+                android:text="@string/prim_spin" />
         </LinearLayout>
 
         <TextView
@@ -224,19 +200,13 @@
 
             <Button
                 android:id="@+id/btnCompRiseClick"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/comp_rise_click"
-                android:textSize="12sp" />
+                style="@style/GridButton"
+                android:text="@string/comp_rise_click" />
 
             <Button
                 android:id="@+id/btnCompHeartbeat"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/comp_heartbeat"
-                android:textSize="12sp" />
+                style="@style/GridButton"
+                android:text="@string/comp_heartbeat" />
         </LinearLayout>
 
         <TextView
@@ -272,27 +242,29 @@
 
         <Button
             android:id="@+id/btnOneShot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/WideButton"
             android:text="@string/play_one_shot" />
 
         <Button
             android:id="@+id/btnPulses"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/WideButton"
             android:text="@string/play_pulses" />
 
         <Button
             android:id="@+id/btnRamp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/WideButton"
             android:text="@string/play_ramp" />
 
         <Button
             android:id="@+id/btnCancel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/WideButton"
             android:text="@string/cancel" />
+
+        <Button
+            android:id="@+id/btnFuzz"
+            style="@style/WideButton"
+            android:layout_marginTop="16dp"
+            android:text="@string/fuzz" />
 
         <TextView
             android:id="@+id/resultText"

@@ -9,17 +9,20 @@ package com.cap.haptics.core.model
  *
  * Like [PredefinedEffect], this holds no platform constant so the model layer stays pure.
  */
-enum class HapticPrimitive(val minApi: Int) {
-    CLICK(30),
-    TICK(30),
-    QUICK_RISE(30),
-    SLOW_RISE(30),
-    QUICK_FALL(30),
-    LOW_TICK(31),
-    THUD(31),
-    SPIN(31);
+enum class HapticPrimitive(val id: Int, val minApi: Int) {
+    CLICK(id = 0, minApi = 30),
+    TICK(id = 1, minApi = 30),
+    QUICK_RISE(id = 2, minApi = 30),
+    SLOW_RISE(id = 3, minApi = 30),
+    QUICK_FALL(id = 4, minApi = 30),
+    LOW_TICK(id = 5, minApi = 31),
+    THUD(id = 6, minApi = 31),
+    SPIN(id = 7, minApi = 31);
 
     companion object {
+        /** Parses an id arriving over JNI. Null rather than throwing on garbage. */
+        fun fromId(id: Int): HapticPrimitive? = entries.firstOrNull { it.id == id }
+
         /**
          * The primitives T3 cannot do without.
          *

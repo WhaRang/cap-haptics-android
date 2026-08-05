@@ -14,10 +14,20 @@ data class CompositionStep(
     companion object {
         const val MAX_SCALE: Float = 1f
 
+        /**
+         * A sanity bound. The platform caps composition size too, but the limit is not
+         * available below API 34 -- and anything approaching this is a bug in the caller
+         * rather than a pattern anyone would feel as a pattern.
+         */
+        const val MAX_STEPS: Int = 64
+
         /** Returns a human-readable problem description, or null when valid. */
         fun validate(steps: List<CompositionStep>): String? = when {
             steps.isEmpty() ->
                 "composition must have at least one step"
+
+            steps.size > MAX_STEPS ->
+                "composition has ${steps.size} steps, limit is $MAX_STEPS"
 
             steps.any { it.scale < 0f || it.scale > MAX_SCALE } ->
                 "scale must be in 0..$MAX_SCALE, got ${steps.map { it.scale }}"
