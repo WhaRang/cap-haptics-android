@@ -7,6 +7,31 @@
     <string name="tier_t2">T2</string>
     <string name="tier_t3">T3</string>
 
+    <string name="pattern_header">Semantic patterns — the SDK\'s actual API</string>
+
+    <string name="predefined_header">Predefined effects (native at T2+, approximated at T1)</string>
+    <string name="effect_tick">Tick</string>
+    <string name="effect_click">Click</string>
+    <string name="effect_double">Double</string>
+    <string name="effect_heavy">Heavy</string>
+
+    <string name="primitive_header">Composition primitives (native at T3, flattened below)</string>
+    <string name="prim_click">Click</string>
+    <string name="prim_tick">Tick</string>
+    <string name="prim_low_tick">LowTick</string>
+    <string name="prim_thud">Thud</string>
+    <string name="prim_quick_rise">QRise</string>
+    <string name="prim_slow_rise">SRise</string>
+    <string name="prim_quick_fall">QFall</string>
+    <string name="prim_spin">Spin</string>
+
+    <string name="view_feedback_header">System channel — obeys the user\'s haptic settings</string>
+
+    <string name="composition_header">Compositions</string>
+    <string name="comp_rise_click">Rise → Click</string>
+    <string name="comp_heartbeat">Heartbeat</string>
+
+    <string name="raw_header">Raw waveform</string>
     <string name="play_one_shot">One-shot</string>
     <string name="play_pulses">Triple pulse</string>
     <string name="play_ramp">Ramp up (needs amplitude control)</string>

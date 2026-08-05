@@ -1,6 +1,8 @@
 package com.cap.haptics.core.backend
 
+import android.os.Build
 import android.os.Vibrator
+import com.cap.haptics.core.feedback.ViewFeedbackChannel
 import com.cap.haptics.core.model.HapticCapabilities
 import com.cap.haptics.core.model.HapticTier
 import com.cap.haptics.core.model.TierSelector
@@ -38,6 +40,7 @@ internal object BackendFactory {
         vibrator: Vibrator?,
         capabilities: HapticCapabilities,
         forcedTier: HapticTier?,
+        viewFeedback: ViewFeedbackChannel? = null,
     ): HapticBackend {
         val natural = TierSelector.select(capabilities)
         val resolved = resolveTier(natural, forcedTier)
@@ -53,14 +56,34 @@ internal object BackendFactory {
 
         return when (resolved) {
             HapticTier.NONE -> NoOpBackend
-            HapticTier.WAVEFORM -> WaveformBackend(vibrator, capabilities)
-
-            // A3 and A4 replace these. Until then they degrade to T1 rather than failing --
-            // and say so, so a missing backend never masquerades as a working one.
-            HapticTier.PREDEFINED, HapticTier.COMPOSED -> {
-                HLog.w("T${resolved.level} backend not implemented yet; falling back to T1")
-                WaveformBackend(vibrator, capabilities)
-            }
+            HapticTier.WAVEFORM -> WaveformBackend(vibrator, capabilities, viewFeedback)
+            HapticTier.PREDEFINED -> predefined(vibrator, capabilities, viewFeedback)
+            HapticTier.COMPOSED -> composed(vibrator, capabilities, viewFeedback)
         }
+    }
+
+    /**
+     * The SDK_INT checks below are redundant -- `TierSelector` only returns PREDEFINED at
+     * API 29+ and COMPOSED at API 30+ -- but lint cannot see those invariants, and a
+     * defensive fallback costs nothing.
+     */
+    private fun predefined(
+        vibrator: Vibrator,
+        capabilities: HapticCapabilities,
+        viewFeedback: ViewFeedbackChannel?,
+    ): HapticBackend = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        PredefinedBackend(vibrator, capabilities, viewFeedback)
+    } else {
+        WaveformBackend(vibrator, capabilities, viewFeedback)
+    }
+
+    private fun composed(
+        vibrator: Vibrator,
+        capabilities: HapticCapabilities,
+        viewFeedback: ViewFeedbackChannel?,
+    ): HapticBackend = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        ComposedBackend(vibrator, capabilities, viewFeedback)
+    } else {
+        predefined(vibrator, capabilities, viewFeedback)
     }
 }

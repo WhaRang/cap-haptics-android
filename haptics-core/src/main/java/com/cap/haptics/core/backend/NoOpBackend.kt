@@ -1,7 +1,10 @@
 package com.cap.haptics.core.backend
 
+import com.cap.haptics.core.model.CompositionStep
+import com.cap.haptics.core.model.HapticPattern
 import com.cap.haptics.core.model.HapticResult
 import com.cap.haptics.core.model.HapticTier
+import com.cap.haptics.core.model.PredefinedEffect
 import com.cap.haptics.core.model.Waveform
 
 /**
@@ -15,6 +18,14 @@ internal object NoOpBackend : HapticBackend {
     override val tier: HapticTier get() = HapticTier.NONE
 
     override fun playWaveform(waveform: Waveform): HapticResult = HapticResult.NO_VIBRATOR
+
+    override fun playEffect(effect: PredefinedEffect): HapticResult = HapticResult.NO_VIBRATOR
+
+    override fun playComposition(steps: List<CompositionStep>): HapticResult =
+        HapticResult.NO_VIBRATOR
+
+    override fun playPattern(pattern: HapticPattern, intensity: Float): HapticResult =
+        HapticResult.NO_VIBRATOR
 
     override fun cancel() = Unit
 }

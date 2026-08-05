@@ -29,7 +29,17 @@ enum class HapticResult(val code: Int) {
     INVALID_ARGUMENT(4),
 
     /** The platform call itself failed. Logged with the throwable. */
-    PLATFORM_ERROR(5);
+    PLATFORM_ERROR(5),
+
+    /**
+     * The system declined to play it -- almost always because the user has haptic feedback
+     * switched off.
+     *
+     * Only the view-feedback channel can report this; the `Vibrator` path just silently does
+     * nothing. That makes this the single most useful result code in the enum, because
+     * "I felt nothing" is otherwise indistinguishable from a bug in the SDK.
+     */
+    SUPPRESSED(6);
 
     val isSuccess: Boolean get() = this == OK
 
