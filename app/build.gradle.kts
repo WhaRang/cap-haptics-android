@@ -4,6 +4,10 @@ plugins {
 
 android {
     namespace = "com.cap.haptics.demo"
+    // Still 37, unlike the library modules' 36: the androidx dependencies below demand it,
+    // and this harness is never consumed by Unity, so the AAR-metadata ceiling that pinned
+    // :haptics-core and :haptics-unity to 36 does not apply here. An app compiling against
+    // 37 may freely consume libraries compiled against 36.
     compileSdk {
         version = release(37)
     }

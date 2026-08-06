@@ -17,5 +17,9 @@ package com.cap.haptics.unity
  * one.
  */
 object BridgeVersion {
-    const val CURRENT: Int = 1
+    // v2 (U2): systemHapticsEnabled in the capabilities JSON changed from `true/false/null`
+    // to the tri-state string "YES"/"NO"/"UNKNOWN" — a wire-format change a v1 C# parser
+    // would misread as `false`, which is exactly the kind of silent drift this constant
+    // exists to catch.
+    const val CURRENT: Int = 2
 }

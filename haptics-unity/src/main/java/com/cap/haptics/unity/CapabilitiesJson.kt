@@ -39,9 +39,18 @@ internal object CapabilitiesJson {
             "deviceTier" to Json.number(deviceTier.level),
             "activeTier" to Json.number(activeTier.level),
             "viewFeedbackAvailable" to Json.bool(viewFeedbackAvailable),
-            // Null, not false: "we could not read it" and "the user turned it off" are
-            // different answers, and the panel should not conflate them.
-            "systemHapticsEnabled" to Json.boolOrNull(systemHapticsEnabled),
+            // Tri-state string, not a nullable bool: "we could not read it" and "the user
+            // turned it off" are different answers the panel must not conflate — and the
+            // first draft's `true/false/null` turned out to be unrepresentable in Unity's
+            // JsonUtility, which silently reads null as false. The values are
+            // SupportLevel names, the vocabulary the rest of the blob already uses.
+            "systemHapticsEnabled" to Json.string(
+                when (systemHapticsEnabled) {
+                    true -> "YES"
+                    false -> "NO"
+                    null -> "UNKNOWN"
+                }
+            ),
             "effects" to Json.array(
                 PredefinedEffect.entries.map { effect ->
                     Json.obj(

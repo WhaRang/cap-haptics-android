@@ -5,17 +5,16 @@ plugins {
 }
 
 /**
- * Where the release AARs get installed for Unity to pick up.
+ * Where the release AARs get installed for Unity to pick up: the UPM package's own plugin
+ * folder (U0 moved them out of `Assets/Plugins/Android`).
  *
- * Override with `-PcapHaptics.unityPluginDir=...`, or a line in `gradle.properties`, once the
- * Unity side becomes a UPM package and the destination moves from `Assets/Plugins/Android`
- * to the package's own plugin folder.
+ * Override with `-PcapHaptics.unityPluginDir=...`, or a line in `gradle.properties`.
  */
 val unityPluginDir: String = providers
     .gradleProperty("capHaptics.unityPluginDir")
     .getOrElse(
         layout.projectDirectory
-            .dir("../cap-haptics-unity/Assets/Plugins/Android")
+            .dir("../cap-haptics-unity/Packages/com.cap.haptics/Plugins/Android")
             .asFile
             .absolutePath
     )

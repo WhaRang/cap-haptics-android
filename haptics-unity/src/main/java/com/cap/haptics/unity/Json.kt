@@ -44,7 +44,4 @@ internal object Json {
     fun bool(value: Boolean): String = value.toString()
 
     fun number(value: Int): String = value.toString()
-
-    /** JSON null for an unknown, which is honest in a way that `false` would not be. */
-    fun boolOrNull(value: Boolean?): String = value?.toString() ?: "null"
 }

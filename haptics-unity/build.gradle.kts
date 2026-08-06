@@ -4,8 +4,10 @@ plugins {
 
 android {
     namespace = "com.cap.haptics.unity"
+    // 36, not 37 — same consumer constraint as :haptics-core: Unity 6000.3's AGP 8.10
+    // cannot compile against android-37, and AAR metadata forces our compileSdk on consumers.
     compileSdk {
-        version = release(37)
+        version = release(36)
     }
 
     defaultConfig {

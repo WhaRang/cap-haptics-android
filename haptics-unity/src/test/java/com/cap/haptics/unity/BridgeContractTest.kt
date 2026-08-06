@@ -98,6 +98,7 @@ class BridgeContractTest {
         assertTrue(json.contains("\"activeTier\":1"))
         assertTrue(json.contains("\"hasAmplitudeControl\":true"))
         assertTrue(json.contains("\"CLICK\""))
+        assertTrue(json.contains("\"systemHapticsEnabled\":\"YES\""))
         assertTrue(json.contains("\"durationMs\":12"))
         // Unqueried durations report -1 rather than being omitted, so the C# parse stays
         // uniform across entries.
@@ -105,8 +106,10 @@ class BridgeContractTest {
     }
 
     @Test
-    fun `unknown system haptics is null rather than false`() {
-        // "We could not read it" and "the user turned it off" are different answers.
+    fun `unknown system haptics is UNKNOWN rather than NO`() {
+        // "We could not read it" and "the user turned it off" are different answers. A
+        // tri-state string rather than a nullable bool, because Unity's JsonUtility parses
+        // JSON null as false — which is precisely the conflation this field must avoid.
         val json = CapabilitiesJson.of(
             capabilities = capabilities,
             deviceTier = HapticTier.COMPOSED,
@@ -115,7 +118,7 @@ class BridgeContractTest {
             systemHapticsEnabled = null,
         )
 
-        assertTrue(json.contains("\"systemHapticsEnabled\":null"))
+        assertTrue(json.contains("\"systemHapticsEnabled\":\"UNKNOWN\""))
     }
 
     @Test

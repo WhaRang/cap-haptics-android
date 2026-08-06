@@ -4,8 +4,11 @@ plugins {
 
 android {
     namespace = "com.cap.haptics.core"
+    // 36, not 37: AGP stamps compileSdk into the AAR metadata as the minimum the *consumer*
+    // must compile against, and Unity 6000.3 ships AGP 8.10 which tops out at android-36.
+    // Nothing here needs 37 — the newest symbols used are API 34 constants.
     compileSdk {
-        version = release(37)
+        version = release(36)
     }
 
     defaultConfig {
