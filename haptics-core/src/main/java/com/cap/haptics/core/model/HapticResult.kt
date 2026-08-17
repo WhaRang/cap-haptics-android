@@ -39,7 +39,14 @@ enum class HapticResult(val code: Int) {
      * nothing. That makes this the single most useful result code in the enum, because
      * "I felt nothing" is otherwise indistinguishable from a bug in the SDK.
      */
-    SUPPRESSED(6);
+    SUPPRESSED(6),
+
+    /**
+     * The app-level enable switch on the Unity side is off. Never produced natively --
+     * the C# facade rejects playback before it reaches the bridge; the code exists here
+     * so the enum manifest stays in agreement (wire ids are append-only).
+     */
+    DISABLED(7);
 
     val isSuccess: Boolean get() = this == OK
 
