@@ -14,7 +14,7 @@ val unityPluginDir: String = providers
     .gradleProperty("capHaptics.unityPluginDir")
     .getOrElse(
         layout.projectDirectory
-            .dir("../cap-haptics-unity/Packages/com.cap.haptics/Plugins/Android")
+            .dir("../cap-haptics-unity/Packages/dev.wharang.caphaptics/Plugins/Android")
             .asFile
             .absolutePath
     )
