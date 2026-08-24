@@ -62,7 +62,7 @@ every pattern through that tier.
 
 ```
 ┌─ Unity (C#) ─────────────────────────────────────────────────────┐
-│ L0  Public API        Haptics.Play(HapticPattern.Success)        │
+│ L0  Public API        CapHapticsManager.Play(HapticPattern..)   │
 │ L1  Platform router   Android / iOS / Editor stub                │
 │ L2  JNI bridge        AndroidJavaObject, primitives only         │
 └──────────────────────────┬───────────────────────────────────────┘
