@@ -1,6 +1,9 @@
-# cap-haptics
+# cap-haptics-android
 
-**A semantic haptics SDK for Android, built in Kotlin, designed to be driven from Unity.**
+**The Android native engine of Cap Haptics — a semantic haptics SDK in Kotlin, driven
+from Unity through a versioned JNI ABI.** The product hub (Unity project, UPM package,
+demo app) is [`cap-haptics-unity`](https://github.com/WhaRang/cap-haptics-unity); this repo is the engineering
+deep dive.
 
 ![minSdk](https://img.shields.io/badge/minSdk-26-blue)
 ![compileSdk](https://img.shields.io/badge/compileSdk-37-blue)
