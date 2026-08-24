@@ -156,7 +156,7 @@ verifiable anyway:
 
 1. **`CapabilityProbe` is the only class that touches the platform.** Everything downstream —
    tier selection, the pattern registry, intensity scaling, primitive substitution — is a pure
-   function over a `HapticCapabilities` data class. "What happens on an API 26 device with no
+   function over a `HapticCapabilities` data class. "What happens on an API 22 device with no
    amplitude control" is a JVM unit test, not a device you have to buy.
 2. **A forced-tier override**, so every tier can be *felt* on one phone. It simulates the code
    path, not the hardware — a forced T1 tells you what the waveform backend emits, not how that
