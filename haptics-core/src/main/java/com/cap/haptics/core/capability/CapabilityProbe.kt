@@ -40,7 +40,10 @@ object CapabilityProbe {
                 HapticCapabilities(
                     sdkInt = sdkInt,
                     hasVibrator = true,
-                    hasAmplitudeControl = vibrator.hasAmplitudeControl(),
+                    // The query itself is API 26; below that there is also no API that
+                    // could *use* amplitude data, so false is the honest answer twice over.
+                    hasAmplitudeControl = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
+                        vibrator.hasAmplitudeControl(),
                     vibratorCount = VibratorProvider.count(context),
                     effectSupport = probeEffects(vibrator),
                     primitiveSupport = probePrimitives(vibrator),

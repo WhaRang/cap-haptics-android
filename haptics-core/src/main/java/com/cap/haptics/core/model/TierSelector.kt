@@ -29,7 +29,9 @@ object TierSelector {
         val anyEffectUsable = PredefinedEffect.entries.any { capabilities.supportOf(it).usable }
         if (capabilities.sdkInt >= 29 && anyEffectUsable) return HapticTier.PREDEFINED
 
-        // T1: the minSdk 26 floor. VibrationEffect always exists here.
+        // T1: the floor for every device with a motor. From API 26 this is
+        // VibrationEffect.createWaveform; below it the backend plays the same timing
+        // arrays through the legacy vibrate(long[], int) overload, amplitude-free.
         return HapticTier.WAVEFORM
     }
 }

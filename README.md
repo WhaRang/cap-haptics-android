@@ -5,7 +5,7 @@ from Unity through a versioned JNI ABI.** The product hub (Unity project, UPM pa
 demo app) is [`cap-haptics-unity`](https://github.com/WhaRang/cap-haptics-unity); this repo is the engineering
 deep dive.
 
-![minSdk](https://img.shields.io/badge/minSdk-26-blue)
+![minSdk](https://img.shields.io/badge/minSdk-21-blue)
 ![compileSdk](https://img.shields.io/badge/compileSdk-37-blue)
 ![Kotlin](https://img.shields.io/badge/Kotlin-AGP%209.3.1-7F52FF)
 ![Tests](https://img.shields.io/badge/unit%20tests-84-brightgreen)
@@ -98,7 +98,7 @@ Selected **once at init**, from probed capability — not per call.
 |---|---|---|
 | **T3 — Composed** | API 30+ *and* `arePrimitivesSupported` confirms the core primitives | `VibrationEffect.Composition` — crisp, hardware-tuned |
 | **T2 — Predefined** | API 29+ | `createPredefined` — OEM-tuned constants |
-| **T1 — Waveform** | API 26+ (the floor) | `createWaveform`, amplitude if the motor has it |
+| **T1 — Waveform** | any device with a motor (the floor) | API 26+: `createWaveform`, amplitude if the motor has it; API 21–25: the legacy timing-pattern `vibrate`, rhythm only |
 
 There's also a parallel **system channel** (`View.performHapticFeedback`) used only for genuine
 UI gestures. It's the one path that obeys the user's haptic settings *and reports when it was

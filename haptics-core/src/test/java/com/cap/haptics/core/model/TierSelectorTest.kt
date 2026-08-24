@@ -46,6 +46,27 @@ class TierSelectorTest {
     }
 
     @Test
+    fun `pre-26 devices land on the waveform floor, not NONE`() {
+        // Below API 26 the backend plays the same timing arrays through the legacy
+        // vibrate(long[], int) overload -- a motor is the only requirement.
+        for (sdkInt in 21..25) {
+            val caps = capabilities(
+                sdkInt = sdkInt,
+                hasAmplitudeControl = false,
+                effects = SupportLevel.NO,
+                primitives = allPrimitives(SupportLevel.NO),
+            )
+            assertEquals("sdkInt=$sdkInt", HapticTier.WAVEFORM, TierSelector.select(caps))
+        }
+    }
+
+    @Test
+    fun `pre-26 device without a vibrator is NONE`() {
+        val caps = capabilities(sdkInt = 21, hasVibrator = false, hasAmplitudeControl = false)
+        assertEquals(HapticTier.NONE, TierSelector.select(caps))
+    }
+
+    @Test
     fun `API 29 unknown effect support still selects PREDEFINED`() {
         // The platform substitutes a generic fallback, which beats a hand-rolled waveform.
         val caps = capabilities(sdkInt = 29, effects = SupportLevel.UNKNOWN, primitives = allPrimitives(SupportLevel.NO))

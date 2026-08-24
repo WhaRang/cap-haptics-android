@@ -14,7 +14,9 @@ android {
 
     defaultConfig {
         applicationId = "com.cap.haptics.demo"
-        minSdk = 26
+        // The harness needs Material Components (minSdk 23); the shipped libraries
+        // themselves are minSdk 21.
+        minSdk = 23
         targetSdk = 37
         versionCode = 1
         versionName = "1.0"

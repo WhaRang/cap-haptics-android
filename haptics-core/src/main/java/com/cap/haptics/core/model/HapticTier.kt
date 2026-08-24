@@ -14,7 +14,8 @@ enum class HapticTier(val level: Int) {
     /** No vibrator on this device. Playback is a well-behaved no-op. */
     NONE(0),
 
-    /** T1 -- `createWaveform`, amplitude only if the motor supports it. The API 26 floor. */
+    /** T1 -- waveforms: `createWaveform` from API 26 (amplitude if the motor supports it),
+     *  the legacy timing-pattern `vibrate` below. The floor for any device with a motor. */
     WAVEFORM(1),
 
     /** T2 -- `createPredefined`, OEM-tuned constants. API 29+. */

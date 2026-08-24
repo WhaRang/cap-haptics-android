@@ -1,5 +1,6 @@
 package com.cap.haptics.core.backend
 
+import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
 import com.cap.haptics.core.model.CompositionStep
@@ -18,7 +19,12 @@ import com.cap.haptics.core.pattern.Rendering
 import com.cap.haptics.core.util.HLog
 
 /**
- * T1 -- `VibrationEffect.createWaveform`. The API 26 floor, so this always works.
+ * T1 -- waveforms, on every supported device. From API 26 through
+ * `VibrationEffect.createWaveform` with amplitude control where the motor has it; below
+ * that through the legacy `vibrate(long[], int)` overload, which takes the *same* timing
+ * array (alternating off/on -- the shape every waveform in this SDK already uses) with no
+ * amplitude data. The rhythm carries a pattern's identity, so the same renderings serve
+ * both paths.
  *
  * Deliberately `open`: a T3 device can do everything a T1 device can, so the higher-tier
  * backends extend this one and add their tier's capability on top rather than duplicating
@@ -44,17 +50,25 @@ internal open class WaveformBackend(
             }
 
         return try {
-            val amplitudes = effective.amplitudes
-            val effect = if (amplitudes != null) {
-                VibrationEffect.createWaveform(
-                    effective.timingsMs,
-                    amplitudes,
-                    effective.repeatIndex,
-                )
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val amplitudes = effective.amplitudes
+                val effect = if (amplitudes != null) {
+                    VibrationEffect.createWaveform(
+                        effective.timingsMs,
+                        amplitudes,
+                        effective.repeatIndex,
+                    )
+                } else {
+                    VibrationEffect.createWaveform(effective.timingsMs, effective.repeatIndex)
+                }
+                vibrator.vibrate(effect)
             } else {
-                VibrationEffect.createWaveform(effective.timingsMs, effective.repeatIndex)
+                // Pre-26 there is exactly one API: the deprecated timing-pattern overload.
+                // Same array shape, no amplitude -- and amplitudes were already stripped
+                // above, because these devices cannot report amplitude control.
+                @Suppress("DEPRECATION")
+                vibrator.vibrate(effective.timingsMs, effective.repeatIndex)
             }
-            vibrator.vibrate(effect)
             HLog.d("T${tier.level} waveform: $effective")
             HapticResult.OK
         } catch (t: Throwable) {
