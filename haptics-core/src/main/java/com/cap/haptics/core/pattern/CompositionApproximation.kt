@@ -13,7 +13,7 @@ import com.cap.haptics.core.model.Waveform
  * **What is lost is the envelope shape.** QUICK_RISE and SLOW_RISE become flat pulses of
  * roughly the right length and weight -- a waveform cannot express a hardware-tuned ramp,
  * and pretending otherwise would produce something that feels wrong rather than simpler.
- * A5 gives the patterns that genuinely depend on rising envelopes a purpose-built lower-tier
+ * The pattern registry gives the patterns that genuinely depend on rising envelopes a purpose-built lower-tier
  * rendering instead of relying on this generic fallback.
  */
 internal object CompositionApproximation {

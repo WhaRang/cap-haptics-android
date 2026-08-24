@@ -4,7 +4,7 @@ package com.cap.haptics.core.model
  * Decides which playback tier a device should use.
  *
  * A pure function over [HapticCapabilities], deliberately separate from backend
- * construction (A2's `BackendFactory`, which needs a live `Vibrator`). Keeping the
+ * construction (`BackendFactory`, which needs a live `Vibrator`). Keeping the
  * *decision* pure and the *instantiation* impure means the interesting half is
  * exhaustively unit-testable without hardware.
  *

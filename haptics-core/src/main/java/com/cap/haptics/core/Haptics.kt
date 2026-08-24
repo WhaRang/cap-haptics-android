@@ -33,7 +33,7 @@ import com.cap.haptics.core.util.SystemHapticsSettings
  *
  * Ask for a *meaning* and the library decides how to render it on the hardware in front of
  * it — composing primitives on a modern LRA, falling back through platform-tuned effects to
- * plain waveforms on weaker motors. See PLAN.md section 3.2 for the full matrix.
+ * plain waveforms on weaker motors.
  *
  * ### Guarantees
  *

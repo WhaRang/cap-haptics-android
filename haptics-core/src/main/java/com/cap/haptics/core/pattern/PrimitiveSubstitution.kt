@@ -7,7 +7,7 @@ import com.cap.haptics.core.model.HapticPrimitive
  *
  * Substitution is **per-primitive, not per-pattern**. A motor may render CLICK perfectly and
  * refuse THUD; dropping the whole composition to T2 because of one missing garnish would
- * throw away the crispness of every other step. See PLAN.md section 3.2.
+ * throw away the crispness of every other step.
  *
  * Each chain is ordered by perceptual similarity and terminates in [HapticPrimitive.CORE],
  * which the T3 tier gate guarantees is present -- so on any device that reached T3 these

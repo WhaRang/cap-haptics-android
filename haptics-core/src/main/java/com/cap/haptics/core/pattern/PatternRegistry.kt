@@ -9,7 +9,7 @@ import com.cap.haptics.core.model.ViewFeedback
 import com.cap.haptics.core.model.Waveform
 
 /**
- * The degradation matrix (PLAN.md section 3.2), in code.
+ * The degradation matrix, in code.
  *
  * Every pattern declares a rendering at **every** tier. `PatternRegistryTest` asserts that
  * exhaustively, which is what turns "never silently no-op" from an intention into a

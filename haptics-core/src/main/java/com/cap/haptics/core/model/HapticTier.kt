@@ -4,10 +4,9 @@ package com.cap.haptics.core.model
  * The playback strategy chosen for this device.
  *
  * Selected once at init from a [HapticCapabilities] snapshot, never re-decided per call.
- * See PLAN.md section 3.1.
  *
- * [level] is the stable integer form. It crosses the JNI boundary in A8 and drives the
- * forced-tier debug override in A2, so these numbers are part of the ABI -- append new
+ * [level] is the stable integer form. It crosses the JNI boundary and drives the
+ * forced-tier debug override, so these numbers are part of the ABI -- append new
  * tiers, never renumber existing ones.
  */
 enum class HapticTier(val level: Int) {

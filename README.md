@@ -21,8 +21,10 @@ tuned primitives on a modern LRA, falling back through platform-tuned effects to
 waveforms on weaker motors. Every pattern is guaranteed to produce *something* on every
 supported device, and the choice is driven by **probed capability, never by API level alone**.
 
-The Android SDK is complete and tested. A Unity C# layer sits on top of it through a JNI
-bridge with a versioned ABI.
+The Android SDK is complete and tested. A Unity C# layer — the `dev.wharang.caphaptics`
+UPM package — sits on top of it through a JNI bridge with a versioned ABI, and a sibling
+Swift implementation (`cap-haptics-ios`) renders the same semantic API through Core
+Haptics on iPhone.
 
 ---
 
@@ -58,7 +60,7 @@ every pattern through that tier.
 ```
 ┌─ Unity (C#) ─────────────────────────────────────────────────────┐
 │ L0  Public API        Haptics.Play(HapticPattern.Success)        │
-│ L1  Platform router   Android / Editor stub / iOS stub           │
+│ L1  Platform router   Android / iOS / Editor stub                │
 │ L2  JNI bridge        AndroidJavaObject, primitives only         │
 └──────────────────────────┬───────────────────────────────────────┘
                            │  JNI  (the ABI — tiny, versioned, stable)
@@ -179,7 +181,8 @@ Requires JDK 25 (Android Studio's bundled JBR works).
 ./gradlew installUnityPlugin
 ```
 
-The install destination defaults to `../cap-haptics-unity/Assets/Plugins/Android` and is
+The install destination defaults to
+`../cap-haptics-unity/Packages/dev.wharang.caphaptics/Plugins/Android` and is
 overridable with `-PcapHaptics.unityPluginDir=…`.
 
 Two AARs ship, not one: an AAR doesn't bundle its transitive dependencies, so `haptics-core`
@@ -208,11 +211,9 @@ need to know it exists.
 | System view-feedback channel | ✅ |
 | Hardening, fuzzing, no-throw audit | ✅ |
 | JNI bridge, versioned ABI, AAR packaging | ✅ |
-| Unity C# layer, UPM package, sample scene | 🚧 in progress |
-| iOS backend, API 36 envelope effects | 📋 planned |
-
-Full engineering plan, including the reasoning behind each decision and what was tried and
-rejected, is in [`PLAN.md`](PLAN.md).
+| Unity C# layer, UPM package (`dev.wharang.caphaptics`), demo scene | ✅ |
+| iOS backend (`cap-haptics-ios`, Core Haptics / UIFeedbackGenerator) | ✅ |
+| API 36 envelope effects | 📋 planned |
 
 ---
 
@@ -220,12 +221,12 @@ rejected, is in [`PLAN.md`](PLAN.md).
 
 ```
 cap-haptics/
-├── cap-haptics-android/     Kotlin SDK — the substance of this project
+├── cap-haptics-android/     Kotlin SDK (this repo)
 │   ├── haptics-core/        the library
 │   ├── haptics-unity/       JNI adapter
 │   └── app/                 native tuning harness
-├── cap-haptics-unity/       Unity 6 project (in progress)
-└── PLAN.md                  full design document
+├── cap-haptics-ios/         Swift plugin — the same semantic API on Core Haptics
+└── cap-haptics-unity/       Unity 6 project + the published UPM package
 ```
 
 ## License

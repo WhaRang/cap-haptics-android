@@ -7,8 +7,8 @@ import com.cap.haptics.core.model.Waveform
  * How each T2 effect is rendered when the predefined API is unavailable or the device
  * reports the effect unsupported.
  *
- * This is the first slice of the degradation matrix (PLAN.md section 3.2) -- A5 generalises
- * it to full semantic patterns and reuses these values. Pure Kotlin so the numbers are
+ * This is one slice of the degradation matrix -- semantic pattern rendering reuses these
+ * values. Pure Kotlin so the numbers are
  * unit-testable and so the "every rendering degrades to something" rule can be asserted
  * rather than hoped for.
  *

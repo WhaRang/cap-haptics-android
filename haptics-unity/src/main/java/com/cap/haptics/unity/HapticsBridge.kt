@@ -17,7 +17,7 @@ import com.cap.haptics.core.model.Waveform
  *
  * Everything here is shaped by what `AndroidJavaObject.Call` can actually reach from C#, and
  * every rule below exists because breaking it produces a runtime failure with no compiler to
- * catch it (PLAN.md section 3.3):
+ * catch it:
  *
  * - **Primitives, Strings and primitive arrays only.** No Kotlin data classes, no `List<T>`,
  *   no nullable primitives. `Activity` is the single exception, and unavoidable.

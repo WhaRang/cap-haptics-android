@@ -7,7 +7,7 @@ package com.cap.haptics.core.model
  * is a native crash risk and an appalling thing to debug on a device. Every failure comes
  * back as one of these instead.
  *
- * [code] is the wire form and crosses the JNI boundary in A8. Append new codes, never
+ * [code] is the wire form and crosses the JNI boundary. Append new codes, never
  * renumber existing ones.
  */
 enum class HapticResult(val code: Int) {
@@ -21,8 +21,8 @@ enum class HapticResult(val code: Int) {
     /** Device has no vibrator. Playback is a well-behaved no-op. */
     NO_VIBRATOR(2),
 
-    /** The requested pattern has no rendering at the active tier. Should be unreachable
-     *  once A5's matrix is complete -- every pattern degrades to something. */
+    /** The requested pattern has no rendering at the active tier. Should be unreachable --
+     *  the degradation matrix gives every pattern a rendering at every tier. */
     UNSUPPORTED_PATTERN(3),
 
     /** Caller passed something the platform would have rejected. Validated before the call. */

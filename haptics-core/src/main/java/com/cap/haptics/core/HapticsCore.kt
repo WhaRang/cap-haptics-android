@@ -11,6 +11,6 @@ object HapticsCore {
     /** Semantic version of the core library. */
     const val VERSION: String = "0.1.0"
 
-    /** Log tag used by every class in the library. See `util/HLog` (added in A1). */
+    /** Log tag used by every class in the library. See `util/HLog`. */
     const val LOG_TAG: String = "CapHaptics"
 }

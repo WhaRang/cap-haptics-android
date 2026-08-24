@@ -29,7 +29,7 @@ enum class HapticPrimitive(val id: Int, val minApi: Int) {
          * If a device cannot produce a CLICK and a TICK there is nothing composition can
          * express that the predefined-effect tier does not already do better, so the tier
          * gate requires exactly these two and treats the rest as optional garnish handled
-         * by substitution (A4).
+         * by substitution.
          */
         val CORE: Set<HapticPrimitive> = setOf(CLICK, TICK)
     }

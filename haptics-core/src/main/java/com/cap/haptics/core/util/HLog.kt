@@ -10,8 +10,7 @@ import com.cap.haptics.core.HapticsCore
  * without a debugger attached -- on a device where the only symptom of a bug is "I felt
  * nothing", the log is often the only evidence there is.
  *
- * [verbose] is off by default so a shipping app gets warnings and errors only. It is wired
- * to `HapticsConfig` in A2.
+ * [verbose] is off by default so a shipping app gets warnings and errors only. It is wired to `HapticsConfig`.
  */
 object HLog {
 

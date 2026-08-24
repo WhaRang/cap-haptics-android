@@ -165,7 +165,7 @@ class FuzzTest {
 
     @Test
     fun `wire-format parsing rejects garbage instead of throwing`() {
-        // These parse untrusted integers arriving over JNI in A8. Returning null keeps a
+        // These parse untrusted integers arriving over JNI. Returning null keeps a
         // stale C# enum from silently selecting the wrong pattern.
         nastyInts.forEach { value ->
             HapticPattern.fromId(value)

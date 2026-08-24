@@ -39,7 +39,7 @@ data class HapticCapabilities(
 
     /**
      * Measured primitive durations in ms, where the platform will tell us. Empty when the
-     * query is unavailable or fails. Used in A5 to time compositions against real hardware
+     * query is unavailable or fails. Used to time compositions against real hardware
      * rather than guessed delays.
      */
     val primitiveDurationsMs: Map<HapticPrimitive, Int>,

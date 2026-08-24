@@ -13,7 +13,7 @@ import com.cap.haptics.core.model.ViewFeedback
  * ### Why this exists
  *
  * The C# side mirrors these enums by hand, and two hand-written enums always drift
- * eventually. PLAN.md section 8 listed three ways to stop that:
+ * eventually. There were three ways to stop that:
  *
  * a. discipline plus a test asserting the counts match,
  * b. generating the C# from the Kotlin with a Gradle task,

@@ -20,7 +20,7 @@ import com.cap.haptics.core.util.HLog
 /**
  * T1 -- `VibrationEffect.createWaveform`. The API 26 floor, so this always works.
  *
- * Deliberately `open`: a T3 device can do everything a T1 device can, so A3's and A4's
+ * Deliberately `open`: a T3 device can do everything a T1 device can, so the higher-tier
  * backends extend this one and add their tier's capability on top rather than duplicating
  * raw waveform playback. That mirrors how the platform itself layers.
  */

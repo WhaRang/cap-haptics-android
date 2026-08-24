@@ -11,10 +11,8 @@ import com.cap.haptics.core.model.Waveform
  * One playback strategy. Chosen once at init by [BackendFactory], never per call.
  *
  * Every method is implementable at every tier -- a lower tier renders an approximation
- * rather than refusing. That is the "never silently no-op" rule from PLAN.md section 3.2
- * expressed as a type: there is no way to write a backend that simply cannot play something.
- *
- * A5 adds `play(Rendering)` for full semantic patterns.
+ * rather than refusing. That is the "never silently no-op" rule expressed as a type:
+ * there is no way to write a backend that simply cannot play something.
  */
 internal interface HapticBackend {
 

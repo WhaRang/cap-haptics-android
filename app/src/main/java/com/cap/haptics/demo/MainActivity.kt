@@ -30,10 +30,8 @@ import com.cap.haptics.core.model.Waveform
  * Native test harness for the cap-haptics SDK.
  *
  * Exists so patterns can be tuned by feel without Unity in the loop -- the Unity build cycle
- * is far too slow for the dozens of iterations tuning the degradation matrix will take. It
- * grows one screen per phase; see PLAN.md section 5.4.
- *
- * A2: raw waveform playback plus the forced-tier override.
+ * is far too slow for the dozens of iterations pattern tuning takes. Raw waveform playback
+ * plus the forced-tier override.
  */
 class MainActivity : AppCompatActivity() {
 
@@ -110,8 +108,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Generated from the enum rather than laid out by hand, so adding a pattern to the SDK
      * puts a button on this screen for free -- and so a pattern can never be silently
-     * missing from the harness that is supposed to be testing it. The Unity panel does the
-     * same thing in U3.
+     * missing from the harness that is supposed to be testing it. The Unity debug panel does the same thing.
      */
     private fun buildPatternGrid() {
         buildGrid(

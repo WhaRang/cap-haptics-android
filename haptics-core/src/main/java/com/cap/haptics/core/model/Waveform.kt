@@ -34,7 +34,7 @@ class Waveform private constructor(
      * above. A continuously-on envelope -- a ramp, say -- has no silent segments, so
      * stripping its amplitudes turns it into an alternating buzz. That is not a bug in this
      * method so much as the honest truth about the hardware: a motor with no amplitude
-     * control cannot render a ramp. A5's degradation matrix gives such patterns a different
+     * control cannot render a ramp. The degradation matrix gives such patterns a different
      * rendering at this tier rather than relying on this fallback.
      */
     fun withoutAmplitudes(): Waveform = Waveform(timingsMs, null, repeatIndex)

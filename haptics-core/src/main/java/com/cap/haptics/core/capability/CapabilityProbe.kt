@@ -79,7 +79,7 @@ object CapabilityProbe {
 
     /**
      * Queried per-primitive, not as one boolean: LOW_TICK / THUD / SPIN only exist from API
-     * 31, and a motor may support CLICK while refusing THUD. A4's substitution map depends
+     * 31, and a motor may support CLICK while refusing THUD. The substitution map depends
      * on knowing precisely which.
      */
     @SuppressLint("WrongConstant")
@@ -105,7 +105,7 @@ object CapabilityProbe {
     }
 
     /**
-     * Best-effort. Real primitive durations let A5 time compositions against the hardware
+     * Best-effort. Real primitive durations let compositions be timed against the hardware
      * instead of guessing delays, but the query only exists from API 31 -- an empty map is
      * a perfectly acceptable answer.
      */

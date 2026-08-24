@@ -8,7 +8,7 @@ package com.cap.haptics.core.model
  * entire point of the SDK: a game that calls `vibrate(200)` has hardcoded an assumption
  * about a motor it has never met.
  *
- * [id] is the wire form and crosses the JNI boundary in A8, where it is the integer a C#
+ * [id] is the wire form and crosses the JNI boundary, where it is the integer a C#
  * enum mirrors. **Append new patterns, never renumber existing ones** -- a stale AAR paired
  * with a newer C# enum would otherwise silently play the wrong thing rather than failing.
  */
@@ -35,7 +35,7 @@ enum class HapticPattern(val id: Int) {
 
     HEARTBEAT(8),
 
-    /** A6 reroutes this through `View.performHapticFeedback` so it obeys system settings. */
+    /** Rendered through `View.performHapticFeedback` so it obeys system settings. */
     LONG_PRESS(9);
 
     companion object {

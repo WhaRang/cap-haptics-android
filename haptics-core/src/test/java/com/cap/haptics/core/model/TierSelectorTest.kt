@@ -78,7 +78,7 @@ class TierSelectorTest {
 
     @Test
     fun `optional primitives are not required for COMPOSED`() {
-        // THUD and SPIN missing is fine -- A4 substitutes them.
+        // THUD and SPIN missing is fine -- substitution covers them.
         val caps = capabilities(
             sdkInt = 36,
             effects = SupportLevel.YES,
