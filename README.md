@@ -204,22 +204,6 @@ need to know it exists.
 
 ---
 
-## Status
-
-| | |
-|---|---|
-| Capability probing, tier selection | ✅ |
-| All three backends + per-primitive substitution | ✅ |
-| Semantic pattern library + degradation matrix | ✅ |
-| System view-feedback channel | ✅ |
-| Hardening, fuzzing, no-throw audit | ✅ |
-| JNI bridge, versioned ABI, AAR packaging | ✅ |
-| Unity C# layer, UPM package (`dev.wharang.caphaptics`), demo scene | ✅ |
-| iOS backend (`cap-haptics-ios`, Core Haptics / UIFeedbackGenerator) | ✅ |
-| API 36 envelope effects | 📋 planned |
-
----
-
 ## Repository layout
 
 ```
